@@ -70,11 +70,20 @@ function pngSrcs(s) {
 function probeImg(url) {
   return new Promise(res => { const im = new Image(); im.onload = () => res(true); im.onerror = () => res(false); im.src = url; });
 }
+// Probe SEQUENTIALLY and cache per-URL: the zero-dep dev server is single-threaded
+// and drops connections under a parallel burst, which would mis-flag images as missing.
+const _urlExists = {};
+async function probeUrl(u) {
+  if (u in _urlExists) return _urlExists[u];
+  const ok = await probeImg(u);
+  _urlExists[u] = ok;
+  return ok;
+}
 async function probeMarkers() {
-  await Promise.all(SHARKS.map(async s => {
-    for (const u of pngSrcs(s)) { if (await probeImg(u)) { PNG_RESOLVED[s.id] = u; return; } }
+  for (const s of SHARKS) {
     PNG_RESOLVED[s.id] = '';
-  }));
+    for (const u of pngSrcs(s)) { if (await probeUrl(u)) { PNG_RESOLVED[s.id] = u; break; } }
+  }
 }
 
 // map marker: a full campy shark adrift in a field of blood + body parts.
