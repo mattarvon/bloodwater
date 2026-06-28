@@ -46,8 +46,8 @@ function initJason() {
   if (typeof map === "undefined" || !map) return;
   const icon = L.divIcon({
     className: "jason",
-    html: `<img class="jimg" src="assets/jason.png" alt="" onerror="this.parentNode.innerHTML=jasonMaskSVG()">`,
-    iconSize: [42, 50], iconAnchor: [21, 25],
+    html: `<img class="jimg" src="assets/sharks/jason.png" alt="" onerror="this.parentNode.innerHTML=jasonMaskSVG()">`,
+    iconSize: [54, 56], iconAnchor: [27, 30],
   });
   L.marker(JASON_AT, { icon, zIndexOffset: 1000 })
     .bindTooltip("Camp Crystal Lake", { className: "telem-tip", direction: "top" })
