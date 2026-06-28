@@ -36,6 +36,23 @@
       <div class="vignette"></div>
       <div class="hint" id="hint">Select a shark</div>
 
+      <!-- telemetry dashboard -->
+      <div class="telem" id="telem">
+        <button class="telem-toggle" id="telem-toggle" title="collapse">⟨</button>
+        <div class="telem-body">
+          <div class="telem-sec">
+            <h3 class="creep">Tides</h3>
+            <div class="telem-sub">NOAA CO-OPS · live water level</div>
+            <div id="tide-rows"><div class="tmuted">acquiring feed…</div></div>
+          </div>
+          <div class="telem-sec">
+            <h3 class="creep">Air · PM2.5</h3>
+            <div class="telem-sub">PurpleAir · citizen sensors</div>
+            <div id="air-rows"><div class="tmuted">…</div></div>
+          </div>
+        </div>
+      </div>
+
       <div class="controls">
         <div class="ctl">
           <label for="sp">Species</label>
@@ -127,5 +144,8 @@
   <script src="js/data.js"></script>
   <script src="js/wordmark.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/noaa.js"></script>
+  <script src="js/purpleair.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
