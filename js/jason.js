@@ -4,6 +4,7 @@
 // assets/jason.png if one is present.
 
 const JASON_AT = [41.0614853, -74.9426717];
+let jasonLayer;
 
 function jasonMaskSVG() {
   return `<svg viewBox="-17 -19 34 42" width="100%" height="100%">
@@ -49,6 +50,7 @@ function initJason() {
     html: `<img class="jimg" src="assets/sharks/jason.png" alt="" onerror="this.parentNode.innerHTML=jasonMaskSVG()">`,
     iconSize: [54, 56], iconAnchor: [27, 30],
   });
+  jasonLayer = L.layerGroup().addTo(map);
   L.marker(JASON_AT, { icon, zIndexOffset: 1000 })
     .bindTooltip("Camp Crystal Lake", { className: "telem-tip", direction: "top" })
     .on("click", () => inspect({
@@ -65,6 +67,6 @@ function initJason() {
       lat: JASON_AT[0], lon: JASON_AT[1],
       link: "https://en.wikipedia.org/wiki/Jason_Voorhees", linkLabel: "Wikipedia ↗",
     }))
-    .addTo(map);
+    .addTo(jasonLayer);
 }
 initJason();

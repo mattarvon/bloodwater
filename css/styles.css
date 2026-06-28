@@ -66,6 +66,18 @@ body{
 .leaflet-control-attribution{background:rgba(6,8,11,.6)!important;color:#56666d!important;
   font-size:9px!important;letter-spacing:.02em!important;padding:2px 6px!important}
 .leaflet-control-attribution a{color:#7a929a!important}
+/* dark-themed layer toggle control */
+.leaflet-control-layers{background:rgba(7,14,19,.93)!important;border:1px solid #1d3a44!important;
+  border-radius:3px!important;box-shadow:0 6px 22px rgba(0,0,0,.6)!important;color:var(--ash)!important}
+.leaflet-control-layers-toggle{background-image:none!important;width:34px!important;height:34px!important;position:relative}
+.leaflet-control-layers-toggle::after{content:"\2630";position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;color:var(--ash);font-size:17px}
+.leaflet-control-layers-expanded{padding:9px 12px 9px 10px!important;font-size:11px;letter-spacing:.05em}
+.leaflet-control-layers-list{color:var(--ash)}
+.leaflet-control-layers label{color:var(--ash);display:flex;align-items:center;gap:6px;margin:4px 0;cursor:pointer}
+.leaflet-control-layers label:hover{color:var(--bone)}
+.leaflet-control-layers input{accent-color:var(--blood)}
+.leaflet-control-layers-separator{border-top:1px solid #1d3a44!important;margin:6px 0!important}
 /* deep teal->black wash + faint blood haze over the whole map */
 .grade{position:absolute;inset:0;pointer-events:none;z-index:2;
   background:
@@ -188,6 +200,12 @@ body{
 .telem-tip::before{border-top-color:#1d3a44!important}
 
 /* ---- shark markers (Leaflet divIcons): full campy shark in a gore field ---- */
+/* the big marker boxes pass clicks through their empty/gore areas so markers
+   beneath stay reachable; only the creature itself is clickable */
+.smark,.smarksvg{pointer-events:none!important}
+.smark .sharkwrap,.smark .svgfallback,.scutwrap,.scut{pointer-events:auto!important;cursor:pointer}
+.tornado,.jason{pointer-events:none!important}
+.tornado svg,.jason .jimg,.jason svg{pointer-events:auto!important;cursor:pointer}
 .smark{background:none;border:none}
 .sbody{position:absolute;inset:0;transform-origin:50% 50%;transition:transform .18s ease}
 .smark:hover .sbody,.smark.sel .sbody{transform:scale(1.18)}
