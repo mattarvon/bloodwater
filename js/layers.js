@@ -13,6 +13,9 @@ function initLayers() {
   add("Tornadoes", typeof tornadoLayer !== "undefined" ? tornadoLayer : null);
   add("Air sensors", typeof airLayer !== "undefined" ? airLayer : null);
   add("Sightings", typeof sightLayer !== "undefined" ? sightLayer : null);
+  add("Natural events", typeof eonetLayer !== "undefined" ? eonetLayer : null);
+  add("Volcanoes", typeof volcanoLayer !== "undefined" ? volcanoLayer : null);
+  add("Contagion", typeof contagionLayer !== "undefined" ? contagionLayer : null);
   add("Jason", typeof jasonLayer !== "undefined" ? jasonLayer : null);
   L.control.layers(null, ov, { collapsed: true, position: "topright" }).addTo(map);
 }
